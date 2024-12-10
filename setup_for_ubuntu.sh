@@ -28,7 +28,6 @@ rm -rf chromedriver-linux64.zip chromedriver-linux64
 pip3 install selenium
 pip3 install pyautogui
 pip3 install pillow
-pip3 install platform
 
 cat > start_chrome_ubuntu.sh << 'EOL'
 #!/bin/bash
