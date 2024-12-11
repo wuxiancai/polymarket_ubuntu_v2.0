@@ -226,7 +226,7 @@ class CryptoTrader:
         # 初始金额设置
         ttk.Label(settings_container, text="初始金额(%):").grid(row=0, column=0, padx=5, pady=5)
         self.initial_amount_entry = ttk.Entry(settings_container, width=10)
-        self.initial_amount_entry.insert(0, "6.4")
+        self.initial_amount_entry.insert(0, "8")
         self.initial_amount_entry.grid(row=0, column=1, padx=5, pady=5)
         
         # 反水一次设置
@@ -594,7 +594,7 @@ class CryptoTrader:
         
         # 添加版权信息标签
         copyright_label = ttk.Label(scrollable_frame, text="Powered by 无为 Copyright 2024",
-                                   font=('Arial', 8), foreground='gray')
+                                   font=('Arial', 12), foreground='gray')
         copyright_label.pack(pady=(0, 5))  # 上边距0，下距5
 
     def set_yes_no_cash(self):
