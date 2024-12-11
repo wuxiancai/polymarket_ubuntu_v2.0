@@ -1092,8 +1092,8 @@ class CryptoTrader:
             
             # 确认卖出
             confirm_button = WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.XPATH, "//button[contains(text(), '确认卖出')]"))  # 添加缺失的右括号
-            )  # 添加缺失的右括号
+                EC.presence_of_element_located((By.XPATH, "//button[contains(text(), '确认卖出')]"))
+            )
             confirm_button.click()
             
         except Exception as e:  # 添加异常处理
@@ -1308,7 +1308,7 @@ class CryptoTrader:
             
             position_value = None
             try:
-                # 尝试��取第二行NO的标签值，如果不存在会直接进入except块
+                # 尝试获取第二行NO的标签值，如果不存在会直接进入except块
                 second_position = WebDriverWait(self.driver, 2).until(  # 缩短等待时间到2秒
                     EC.presence_of_element_located((By.XPATH, 
                         '//div[@class="c-dhzjXW c-chKWaB c-chKWaB-eVTycx-color-green c-dhzjXW-ibxvuTL-css" and text()="No"]'))
@@ -1341,7 +1341,7 @@ class CryptoTrader:
             self.update_status(error_msg)
 
     def click_profit_sell(self):
-        """点击卖出盈利按钮并处理 MetaMask 弹窗"""
+        """点击Sell-卖出按钮并处理 MetaMask 弹窗"""
         try:
             if not self.driver:
                 self.update_status("请先连接浏览器")
@@ -1387,14 +1387,14 @@ class CryptoTrader:
                 # 取Portfolio值
                 portfolio_element = WebDriverWait(self.driver, 5).until(
                     EC.presence_of_element_located((By.XPATH, 
-                        '//*[@id="__pm_viewport"]/nav[1]/div[1]/div[3]/div/nav/div/ul/div[1]/a[1]/span[1]'))
+                        '(//span[@class="c-PJLV c-jaFKlk c-PJLV-ibdakYG-css"])[1]'))
                 )
                 portfolio_value = portfolio_element.text
 
                 # 获取Cash值
                 cash_element = WebDriverWait(self.driver, 5).until(
                     EC.presence_of_element_located((By.XPATH, 
-                        '//*[@id="__pm_viewport"]/nav[1]/div[1]/div[3]/div/nav/div/ul/div[1]/a[2]/button/span[1]'))
+                        '(//span[@class="c-PJLV c-jaFKlk c-PJLV-ibdakYG-css"])[2]'))
                 )
                 cash_value = cash_element.text
             
@@ -1423,7 +1423,7 @@ class CryptoTrader:
                 return
             
             button = WebDriverWait(self.driver, 10).until(
-                EC.element_to_be_clickable((By.XPATH, '//*[@id="__pm_layout"]/div/div[2]/div/div[1]/div/div[1]/div/div/div[1]'))
+                EC.element_to_be_clickable((By.XPATH, '//div[@class="c-dhzjXW c-gvfudb c-gvfudb-bQykhQ-isSelected-true" and text()="Buy"]'))
             )
             
             self.driver.execute_script("arguments[0].click();", button)
@@ -1440,7 +1440,7 @@ class CryptoTrader:
                 return
             
             button = WebDriverWait(self.driver, 10).until(
-                EC.element_to_be_clickable((By.XPATH, '//*[@id="__pm_layout"]/div/div[2]/div/div[1]/div/div[1]/div/div/div[2]'))
+                EC.element_to_be_clickable((By.XPATH, '//div[@class="c-dhzjXW c-gvfudb" and text()="Sell"]'))
             )
             
             self.driver.execute_script("arguments[0].click();", button)
@@ -1457,7 +1457,7 @@ class CryptoTrader:
                 return
             
             button = WebDriverWait(self.driver, 10).until(
-                EC.element_to_be_clickable((By.XPATH, '//*[@id="__pm_layout"]/div/div[2]/div/div[1]/div/div[2]/div[1]/div[2]/div/div[1]/div'))
+                EC.element_to_be_clickable((By.XPATH, '//div[@class="c-dhzjXW c-dhzjXW-iiUtrmZ-css"]'))
             )
             
             self.driver.execute_script("arguments[0].click();", button)
@@ -1475,7 +1475,7 @@ class CryptoTrader:
             
             button = WebDriverWait(self.driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, 
-                    '//*[@id="__pm_layout"]/div/div[2]/div/div[1]/div/div[2]/div[1]/div[2]/div/div[2]/div'))
+                    '//div[@class="c-dhzjXW c-dhzjXW-ibzvESn-css"]'))
             )
             self.driver.execute_script("arguments[0].click();", button)
             self.update_status("已点击 Buy-No 按钮")
@@ -1492,7 +1492,7 @@ class CryptoTrader:
             
             button = WebDriverWait(self.driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, 
-                    '//*[@id="__pm_layout"]/div/div[2]/div/div[1]/div/div[2]/div[1]/div[2]/div[1]/div[1]/div'))
+                    ' //div[@class="c-dhzjXW c-dhzjXW-iiUtrmZ-css"]'))
             )
             self.driver.execute_script("arguments[0].click();", button)
             self.update_status("已点击 Sell-Yes 按钮")
@@ -1509,7 +1509,7 @@ class CryptoTrader:
             
             button = WebDriverWait(self.driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, 
-                    '//*[@id="__pm_layout"]/div/div[2]/div/div[1]/div/div[2]/div[1]/div[2]/div[1]/div[2]/div'))
+                    '//div[@class="c-dhzjXW c-dhzjXW-ibzvESn-css"]'))
             )
             self.driver.execute_script("arguments[0].click();", button)
             self.update_status("已点击 Sell-No 按钮")
